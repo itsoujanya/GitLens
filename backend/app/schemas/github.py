@@ -8,6 +8,7 @@ class GitHubUser(BaseModel):
     bio: str | None
     location: str | None
     public_repos: int
+    public_gists: int  # add this line
     followers: int
     following: int
     created_at: str  # ISO date string
