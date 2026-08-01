@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.routers import github
 
 app = FastAPI(
     title="GitLens API",
@@ -7,10 +8,10 @@ app = FastAPI(
     version="0.1.0",
 )
 
-# CORS settings (allow frontend dev server and production Vercel domain)
+# CORS settings
 origins = [
-    "http://localhost:5173",   # Vite dev server
-    "https://gitlens.vercel.app",  # placeholder for production frontend
+    "http://localhost:5173",
+    "https://gitlens.vercel.app",
 ]
 
 app.add_middleware(
@@ -20,6 +21,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(github.router)
 
 @app.get("/")
 async def root():
