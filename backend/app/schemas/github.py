@@ -31,6 +31,7 @@ class LanguageStat(BaseModel):
 
 class UserProfileResponse(BaseModel):
     user: GitHubUser
+    repos: list[GitHubRepo]  # add this line
     top_languages: list[LanguageStat]
     most_starred_repo: GitHubRepo | None
     total_stars: int

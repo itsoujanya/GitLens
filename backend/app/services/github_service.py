@@ -36,6 +36,7 @@ async def get_user_profile(username: str) -> UserProfileResponse:
 
     return UserProfileResponse(
         user=user,
+        repos=repos,
         top_languages=top_languages,
         most_starred_repo=most_starred,
         total_stars=total_stars,
